@@ -2,3 +2,6 @@
 	path = hatchery
 	url = https://github.com/duckietown/hatchery.git
 	branch = master
+[submodule "schunk_robots"]
+	path = schunk_robots
+	url = https://github.com/ipa320/schunk_robots.git
