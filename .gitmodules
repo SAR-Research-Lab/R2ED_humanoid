@@ -1,0 +1,4 @@
+[submodule "hatchery"]
+	path = hatchery
+	url = https://github.com/duckietown/hatchery.git
+	branch = master

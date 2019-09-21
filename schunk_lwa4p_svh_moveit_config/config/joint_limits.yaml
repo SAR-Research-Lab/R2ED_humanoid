@@ -1,0 +1,134 @@
+# joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed
+# Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
+# Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
+joint_limits:
+  arm_1_joint:
+    has_velocity_limits: true
+    max_velocity: 1.26
+    has_acceleration_limits: false
+    max_acceleration: 0
+  arm_2_joint:
+    has_velocity_limits: true
+    max_velocity: 1.26
+    has_acceleration_limits: false
+    max_acceleration: 0
+  arm_3_joint:
+    has_velocity_limits: true
+    max_velocity: 1.26
+    has_acceleration_limits: false
+    max_acceleration: 0
+  arm_4_joint:
+    has_velocity_limits: true
+    max_velocity: 1.26
+    has_acceleration_limits: false
+    max_acceleration: 0
+  arm_5_joint:
+    has_velocity_limits: true
+    max_velocity: 1.26
+    has_acceleration_limits: false
+    max_acceleration: 0
+  arm_6_joint:
+    has_velocity_limits: true
+    max_velocity: 1.26
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Finger_Spread:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Index_Finger_Distal:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Index_Finger_Proximal:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Middle_Finger_Distal:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Middle_Finger_Proximal:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Pinky:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Ring_Finger:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Thumb_Flexion:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_Thumb_Opposition:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_index_spread:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j12:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j13:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j14:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j15:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j16:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j17:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j3:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j4:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_j5:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_hand_ring_spread:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0

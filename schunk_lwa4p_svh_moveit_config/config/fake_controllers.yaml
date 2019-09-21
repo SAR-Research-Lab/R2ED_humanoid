@@ -1,0 +1,20 @@
+controller_list:
+  - name: fake_arm_controller
+    joints:
+      - arm_1_joint
+      - arm_2_joint
+      - arm_3_joint
+      - arm_4_joint
+      - arm_5_joint
+      - arm_6_joint
+  - name: fake_hand_controller
+    joints:
+      - left_hand_Thumb_Opposition
+      - left_hand_Thumb_Flexion
+      - left_hand_Index_Finger_Proximal
+      - left_hand_Index_Finger_Distal
+      - left_hand_Middle_Finger_Proximal
+      - left_hand_Middle_Finger_Distal
+      - left_hand_Finger_Spread
+      - left_hand_Pinky
+      - left_hand_Ring_Finger
