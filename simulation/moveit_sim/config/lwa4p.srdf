@@ -1,0 +1,406 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="lwa4p">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="arm">
+        <joint name="arm_base_joint" />
+        <joint name="arm_1_joint" />
+        <joint name="arm_2_joint" />
+        <joint name="arm_3_joint" />
+        <joint name="arm_4_joint" />
+        <joint name="arm_5_joint" />
+        <joint name="arm_6_joint" />
+    </group>
+    <group name="hand">
+        <joint name="left_hand_ring_spread" />
+        <joint name="left_hand_j12" />
+        <joint name="left_hand_j16" />
+        <joint name="left_hand_Ring_Finger" />
+        <joint name="left_hand_j17" />
+        <joint name="left_hand_j13" />
+        <joint name="left_hand_Pinky" />
+        <joint name="left_hand_Finger_Spread" />
+        <joint name="left_hand_j5" />
+        <joint name="left_hand_j15" />
+        <joint name="left_hand_Middle_Finger_Distal" />
+        <joint name="left_hand_Middle_Finger_Proximal" />
+        <joint name="left_hand_j14" />
+        <joint name="left_hand_Index_Finger_Distal" />
+        <joint name="left_hand_Index_Finger_Proximal" />
+        <joint name="left_hand_index_spread" />
+        <joint name="left_hand_middle_spread_dummy" />
+        <joint name="left_hand_j4" />
+        <joint name="left_hand_j3" />
+        <joint name="left_hand_Thumb_Flexion" />
+        <joint name="left_hand_Thumb_Opposition" />
+        <joint name="left_hand_f4" />
+        <joint name="left_hand_Thumb_Helper" />
+        <joint name="left_hand_f1" />
+        <joint name="left_hand_f2" />
+        <joint name="left_hand_f3" />
+        <joint name="left_hand_f5" />
+        <joint name="left_hand_f6" />
+        <joint name="left_hand_f7" />
+        <joint name="left_hand_f8" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="open" group="hand">
+        <joint name="left_hand_Finger_Spread" value="0.3779" />
+        <joint name="left_hand_Index_Finger_Distal" value="0" />
+        <joint name="left_hand_Index_Finger_Proximal" value="0" />
+        <joint name="left_hand_Middle_Finger_Distal" value="0" />
+        <joint name="left_hand_Middle_Finger_Proximal" value="0" />
+        <joint name="left_hand_Pinky" value="0" />
+        <joint name="left_hand_Ring_Finger" value="0" />
+        <joint name="left_hand_Thumb_Flexion" value="0.2613" />
+        <joint name="left_hand_Thumb_Opposition" value="0.5591" />
+        <joint name="left_hand_index_spread" value="0" />
+        <joint name="left_hand_j12" value="0" />
+        <joint name="left_hand_j13" value="0" />
+        <joint name="left_hand_j14" value="0" />
+        <joint name="left_hand_j15" value="0" />
+        <joint name="left_hand_j16" value="0" />
+        <joint name="left_hand_j17" value="0" />
+        <joint name="left_hand_j3" value="0" />
+        <joint name="left_hand_j4" value="0" />
+        <joint name="left_hand_j5" value="0" />
+        <joint name="left_hand_ring_spread" value="0" />
+    </group_state>
+    <group_state name="close" group="hand">
+        <joint name="left_hand_Finger_Spread" value="0.5829" />
+        <joint name="left_hand_Index_Finger_Distal" value="1.334" />
+        <joint name="left_hand_Index_Finger_Proximal" value="0.7984" />
+        <joint name="left_hand_Middle_Finger_Distal" value="1.334" />
+        <joint name="left_hand_Middle_Finger_Proximal" value="0.1842" />
+        <joint name="left_hand_Pinky" value="0.9817" />
+        <joint name="left_hand_Ring_Finger" value="0.9817" />
+        <joint name="left_hand_Thumb_Flexion" value="0.5812" />
+        <joint name="left_hand_Thumb_Opposition" value="0.9282" />
+        <joint name="left_hand_index_spread" value="0" />
+        <joint name="left_hand_j12" value="0" />
+        <joint name="left_hand_j13" value="0" />
+        <joint name="left_hand_j14" value="0" />
+        <joint name="left_hand_j15" value="0" />
+        <joint name="left_hand_j16" value="0" />
+        <joint name="left_hand_j17" value="0" />
+        <joint name="left_hand_j3" value="0" />
+        <joint name="left_hand_j4" value="0" />
+        <joint name="left_hand_j5" value="0" />
+        <joint name="left_hand_ring_spread" value="0" />
+    </group_state>
+    <group_state name="home" group="arm">
+        <joint name="arm_1_joint" value="0" />
+        <joint name="arm_2_joint" value="0" />
+        <joint name="arm_3_joint" value="0" />
+        <joint name="arm_4_joint" value="0" />
+        <joint name="arm_5_joint" value="0" />
+        <joint name="arm_6_joint" value="0" />
+    </group_state>
+    <group_state name="work" group="arm">
+        <joint name="arm_1_joint" value="-0.1943" />
+        <joint name="arm_2_joint" value="1.1011" />
+        <joint name="arm_3_joint" value="-1.3618" />
+        <joint name="arm_4_joint" value="0" />
+        <joint name="arm_5_joint" value="0.0972" />
+        <joint name="arm_6_joint" value="-1.2954" />
+    </group_state>
+    <group_state name="compact" group="arm">
+        <joint name="arm_1_joint" value="1.5868" />
+        <joint name="arm_2_joint" value="1.4897" />
+        <joint name="arm_3_joint" value="2.546" />
+        <joint name="arm_4_joint" value="0" />
+        <joint name="arm_5_joint" value="0.7125" />
+        <joint name="arm_6_joint" value="-1.2954" />
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="hand" parent_link="arm_6_link" group="hand" parent_group="arm" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="arm_1_link" link2="arm_2_link" reason="Adjacent" />
+    <disable_collisions link1="arm_1_link" link2="arm_3_link" reason="Never" />
+    <disable_collisions link1="arm_1_link" link2="arm_podest_link" reason="Adjacent" />
+    <disable_collisions link1="arm_1_link" link2="body" reason="Default" />
+    <disable_collisions link1="arm_1_link" link2="head" reason="Never" />
+    <disable_collisions link1="arm_1_link" link2="zed_camera_center" reason="Never" />
+    <disable_collisions link1="arm_2_link" link2="arm_3_link" reason="Adjacent" />
+    <disable_collisions link1="arm_2_link" link2="arm_4_link" reason="Never" />
+    <disable_collisions link1="arm_2_link" link2="arm_5_link" reason="Never" />
+    <disable_collisions link1="arm_2_link" link2="arm_6_link" reason="Never" />
+    <disable_collisions link1="arm_2_link" link2="arm_podest_link" reason="Never" />
+    <disable_collisions link1="arm_2_link" link2="zed_camera_center" reason="Never" />
+    <disable_collisions link1="arm_3_link" link2="arm_4_link" reason="Adjacent" />
+    <disable_collisions link1="arm_3_link" link2="arm_5_link" reason="Never" />
+    <disable_collisions link1="arm_3_link" link2="arm_6_link" reason="Never" />
+    <disable_collisions link1="arm_3_link" link2="arm_podest_link" reason="Never" />
+    <disable_collisions link1="arm_3_link" link2="left_hand_base_link" reason="Never" />
+    <disable_collisions link1="arm_3_link" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="arm_4_link" link2="arm_5_link" reason="Adjacent" />
+    <disable_collisions link1="arm_4_link" link2="arm_6_link" reason="Never" />
+    <disable_collisions link1="arm_4_link" link2="left_hand_base_link" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="arm_6_link" reason="Adjacent" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_a" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_b" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_base_link" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_c" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_e1" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_e2" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_i" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_j" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_k" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_m" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_n" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_a" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_b" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_base_link" reason="Adjacent" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_c" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_e1" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_e2" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_i" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_j" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_k" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_m" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_n" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="arm_6_link" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="arm_podest_link" link2="body" reason="Adjacent" />
+    <disable_collisions link1="arm_podest_link" link2="head" reason="Never" />
+    <disable_collisions link1="arm_podest_link" link2="zed_camera_center" reason="Never" />
+    <disable_collisions link1="body" link2="head" reason="Adjacent" />
+    <disable_collisions link1="body" link2="zed_camera_center" reason="Never" />
+    <disable_collisions link1="head" link2="zed_camera_center" reason="Adjacent" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_b" reason="Adjacent" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_base_link" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_c" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_e1" reason="Default" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_e2" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_i" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_j" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_k" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_a" link2="left_hand_z" reason="Adjacent" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_base_link" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_c" reason="Adjacent" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_e1" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_e2" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_k" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_b" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_c" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_e1" reason="Adjacent" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_e2" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_i" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_j" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_k" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_m" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_n" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_base_link" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_c" link2="left_hand_e2" reason="Never" />
+    <disable_collisions link1="left_hand_c" link2="left_hand_k" reason="Never" />
+    <disable_collisions link1="left_hand_c" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="left_hand_c" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_c" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_c" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_c" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_c" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_e2" reason="Adjacent" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_i" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_l" reason="Default" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_m" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_n" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_virtual_k" reason="Adjacent" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_virtual_l" reason="Adjacent" />
+    <disable_collisions link1="left_hand_e1" link2="left_hand_z" reason="Adjacent" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_i" reason="Default" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_j" reason="Default" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_k" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_m" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_n" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_virtual_i" reason="Adjacent" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_virtual_j" reason="Adjacent" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_e2" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_j" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_k" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_m" reason="Adjacent" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_n" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_virtual_i" reason="Adjacent" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_i" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_m" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_n" reason="Adjacent" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_virtual_j" reason="Adjacent" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_j" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_l" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_o" reason="Adjacent" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_virtual_k" reason="Adjacent" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_k" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_m" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_o" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_p" reason="Adjacent" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_virtual_l" reason="Adjacent" />
+    <disable_collisions link1="left_hand_l" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_n" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_q" reason="Adjacent" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_m" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_n" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="left_hand_n" link2="left_hand_r" reason="Adjacent" />
+    <disable_collisions link1="left_hand_n" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_n" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_n" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_n" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_n" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_o" link2="left_hand_p" reason="Never" />
+    <disable_collisions link1="left_hand_o" link2="left_hand_s" reason="Adjacent" />
+    <disable_collisions link1="left_hand_o" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_o" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_o" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_o" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_o" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_o" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_o" link2="zed_camera_center" reason="Never" />
+    <disable_collisions link1="left_hand_p" link2="left_hand_q" reason="Never" />
+    <disable_collisions link1="left_hand_p" link2="left_hand_s" reason="Never" />
+    <disable_collisions link1="left_hand_p" link2="left_hand_t" reason="Adjacent" />
+    <disable_collisions link1="left_hand_p" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_p" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_p" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_p" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_p" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_q" link2="left_hand_r" reason="Never" />
+    <disable_collisions link1="left_hand_q" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_q" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_q" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_q" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_q" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_q" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_r" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_r" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_r" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_r" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_r" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_s" link2="left_hand_t" reason="Never" />
+    <disable_collisions link1="left_hand_s" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_s" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_s" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_s" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_s" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_t" link2="left_hand_virtual_i" reason="Never" />
+    <disable_collisions link1="left_hand_t" link2="left_hand_virtual_j" reason="Never" />
+    <disable_collisions link1="left_hand_t" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_t" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_t" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_virtual_i" link2="left_hand_virtual_j" reason="Adjacent" />
+    <disable_collisions link1="left_hand_virtual_i" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_virtual_i" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_virtual_i" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_virtual_j" link2="left_hand_virtual_k" reason="Never" />
+    <disable_collisions link1="left_hand_virtual_j" link2="left_hand_virtual_l" reason="Never" />
+    <disable_collisions link1="left_hand_virtual_j" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_virtual_k" link2="left_hand_virtual_l" reason="Adjacent" />
+    <disable_collisions link1="left_hand_virtual_k" link2="left_hand_z" reason="Never" />
+    <disable_collisions link1="left_hand_virtual_l" link2="left_hand_z" reason="Never" />
+</robot>
