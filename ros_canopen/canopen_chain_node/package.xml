@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>canopen_chain_node</name>
+  <version>0.6.4</version>
+  <description>ROS node base implementation for CANopen chains with support for management services and diagnostics</description>
+
+  <maintainer email="mathias.luedtke@ipa.fraunhofer.de">Mathias Lüdtke</maintainer>
+  <author email="mathias.luedtke@ipa.fraunhofer.de">Mathias Lüdtke</author>
+
+  <license>LGPLv3</license>
+
+  <url type="website">http://wiki.ros.org/canopen_chain_node</url>
+  <url type="repository">https://github.com/ros-industrial/ros_canopen</url>
+  <url type="bugtracker">https://github.com/ros-industrial/ros_canopen/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>canopen_master</depend>
+  <depend>diagnostic_updater</depend>
+  <depend>pluginlib</depend>
+  <depend>roslib</depend>
+  <depend>roscpp</depend>
+  <depend>socketcan_interface</depend> <!-- direct dependency needed for pluginlib look-up -->
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+
+</package>
