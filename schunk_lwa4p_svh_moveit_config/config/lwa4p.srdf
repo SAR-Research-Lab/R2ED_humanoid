@@ -119,6 +119,38 @@
         <joint name="arm_5_joint" value="0.7125" />
         <joint name="arm_6_joint" value="-1.2954" />
     </group_state>
+    <group_state name="wavehome" group="arm">
+        <joint name="arm_1_joint" value="1.5868" />
+        <joint name="arm_2_joint" value="1.4897" />
+        <joint name="arm_3_joint" value="2.546" />
+        <joint name="arm_4_joint" value="0" />
+        <joint name="arm_5_joint" value="0.7125" />
+        <joint name="arm_6_joint" value="-2.79253" />
+    </group_state>
+    <group_state name="waveup" group="arm">
+        <joint name="arm_1_joint" value="1.5868" />
+        <joint name="arm_2_joint" value="0.349066" />
+        <joint name="arm_3_joint" value="1.74533" />
+        <joint name="arm_4_joint" value="0" />
+        <joint name="arm_5_joint" value="0.7125" />
+        <joint name="arm_6_joint" value="-2.79253" />
+    </group_state>
+    <group_state name="waveleft" group="arm">
+        <joint name="arm_1_joint" value="1.5868" />
+        <joint name="arm_2_joint" value="0.349066" />
+        <joint name="arm_3_joint" value="2.18166" />
+        <joint name="arm_4_joint" value="0" />
+        <joint name="arm_5_joint" value="0.7125" />
+        <joint name="arm_6_joint" value="-2.79253" />
+    </group_state>
+    <group_state name="waveright" group="arm">
+        <joint name="arm_1_joint" value="1.5868" />
+        <joint name="arm_2_joint" value="0.349066" />
+        <joint name="arm_3_joint" value="1.309" />
+        <joint name="arm_4_joint" value="0" />
+        <joint name="arm_5_joint" value="0.7125" />
+        <joint name="arm_6_joint" value="-2.79253" />
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="hand" parent_link="arm_6_link" group="hand" parent_group="arm" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
