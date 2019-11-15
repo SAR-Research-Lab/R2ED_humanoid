@@ -1,0 +1,12 @@
+<launch>
+    <arg name="paused" default="false"/>
+    <arg name="gui" default="true"/>
+    <rosparam name="use_sim_time" type="bool" value="true"/> 
+
+    <!-- start gazebo with empty world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find grasping_sim)/worlds/table.sdf"/>
+        <arg name="paused" value="$(arg paused)" />
+        <arg name="gui" value="$(arg gui)" />
+    </include>
+</launch>

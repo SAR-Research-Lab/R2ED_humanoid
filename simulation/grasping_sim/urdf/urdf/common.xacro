@@ -48,7 +48,7 @@
       <joint name="${jname}_joint">
         <hardwareInterface>PositionJointInterface</hardwareInterface>
         <hardwareInterface>VelocityJointInterface</hardwareInterface>
-        <!--hardwareInterface>EffortJointInterface</hardwareInterface-->
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="${jname}_motor">
         <mechanicalReduction>1</mechanicalReduction>
