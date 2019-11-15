@@ -2,7 +2,7 @@
 import rospy
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 import actionlib
-from control_msgs.msg import FollowJointTrajectoryAction,FollowJointTrajectoryGoal
+from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal
 
 pub = rospy.Publisher('/arm/joint_trajectory_controller/command', JointTrajectory, queue_size=1)
 rospy.init_node('move_test', anonymous=True)
