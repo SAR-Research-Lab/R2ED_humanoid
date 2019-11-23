@@ -5,11 +5,11 @@
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/arm" args="joint_group_position_controller joint_state_controller"/>
 
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
-  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false"
+        output="screen"/>
 
-    <include file="$(find grasping_sim)/launch/gazebo_table.launch"/>
+  <include file="$(find grasping_sim)/launch/gazebo_table.launch"/>
 
-    <include file="$(find grasping_sim)/launch/spawn_humanoid.launch"/>
+  <include file="$(find grasping_sim)/launch/spawn_humanoid.launch"/>
 
 </launch>

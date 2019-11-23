@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="svh_transmission" params="name">
+        <transmission name="${name}_Finger_Spread_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Finger_Spread">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Finger_Spread_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Pinky_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Pinky">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Pinky_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Ring_Finger_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Ring_Finger">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Ring_Finger_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Middle_Finger_Proximal_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Middle_Finger_Proximal">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Middle_Finger_Proximal_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Middle_Finger_Distal_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Middle_Finger_Distal">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Middle_Finger_Distal_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+    </xacro:macro>
+
+</robot>

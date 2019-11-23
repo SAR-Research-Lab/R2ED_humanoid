@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="029ef12a-d23d-4971-900a-eae03e17499f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/moveit_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/grasping_sim.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/grasping_sim.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/urdf/urdf/svh/svh.gazebo.xacro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/urdf/urdf/svh/svh.transmission.xacro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/move_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/move_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/launch/arm_control.launch" beforeDir="false" afterPath="$PROJECT_DIR$/launch/arm_control.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urdf/urdf/lwa4p/lwa4p.urdf.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/lwa4p/lwa4p.urdf.xacro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urdf/urdf/svh/svh.urdf.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/svh/svh.urdf.xacro" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
