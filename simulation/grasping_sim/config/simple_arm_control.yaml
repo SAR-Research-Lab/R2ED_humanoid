@@ -1,0 +1,39 @@
+arm:
+  ## joint_names
+  joint_names: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint]
+  ## joint_state_controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  ## position controller
+  joint_group_position_controller:
+    type: position_controllers/JointGroupPositionController
+    joints:
+      - arm_1_joint
+      - arm_2_joint
+      - arm_3_joint
+      - arm_4_joint
+      - arm_5_joint
+      - arm_6_joint
+    required_drive_mode: 1
+left_hand:
+  ## joint_names
+  joint_names: [left_hand_Finger_Spread, left_hand_Pinky, left_hand_Ring_Finger, left_hand_Middle_Finger_Proximal, left_hand_Middle_Finger_Distal, left_hand_Index_Finger_Proximal, left_hand_Index_Finger_Distal, left_hand_Thumb_Flexion, left_hand_Thumb_Opposition]
+  ## joint_state_controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  ## position controller
+  joint_group_position_controller:
+    type: position_controllers/JointGroupPositionController
+    joints:
+      - left_hand_Finger_Spread
+      - left_hand_Pinky
+      - left_hand_Ring_Finger
+      - left_hand_Middle_Finger_Proximal
+      - left_hand_Middle_Finger_Distal
+      - left_hand_Index_Finger_Proximal
+      - left_hand_Index_Finger_Distal
+      - left_hand_Thumb_Flexion
+      - left_hand_Thumb_Opposition
+    required_drive_mode: 1

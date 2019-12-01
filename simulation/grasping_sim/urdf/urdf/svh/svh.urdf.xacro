@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
     <xacro:property name="cyl_radius" value="0.001"/>
     <xacro:include filename="$(find grasping_sim)/urdf/urdf/common.xacro"/>
@@ -32,32 +32,32 @@
         </link>
 
         <link name="${name}_d">
-            <!-- <visual> -->
-            <!-- 	<geometry> -->
-            <!-- 	  <cylinder length="0.110" radius="${cyl_radius}" /> -->
-            <!-- 	</geometry> -->
-            <!-- 	<material name="${name}_green" /> -->
-            <!-- </visual> -->
+             <visual>
+             	<geometry>
+             	  <cylinder length="0.110" radius="${cyl_radius}" />
+             	</geometry>
+             	<material name="${name}_green" />
+             </visual>
         </link>
 
         <link name="${name}_h">
-            <!-- <visual> -->
-            <!-- 	<origin rpy="0 1.571 0" xyz="${side*(-0.0125)} 0 0.0825" /> -->
-            <!-- 	<geometry> -->
-            <!-- 	  <cylinder length="0.025" radius="${cyl_radius}" /> -->
-            <!-- 	</geometry> -->
-            <!-- 	<material name="${name}_green" /> -->
-            <!-- </visual> -->
+             <visual>
+             	<origin rpy="0 1.571 0" xyz="${side*(-0.0125)} 0 0.0825" />
+             	<geometry>
+             	  <cylinder length="0.025" radius="${cyl_radius}" />
+             	</geometry>
+             	<material name="${name}_green" />
+             </visual>
         </link>
 
         <link name="${name}_d2">
-            <!-- <visual> -->
-            <!-- 	<origin rpy="0 0 0" xyz="${side*(-0.025)} 0 0.09625" /> -->
-            <!-- 	<geometry> -->
-            <!-- 	  <cylinder length="0.0275" radius="${cyl_radius}" /> -->
-            <!-- 	</geometry> -->
-            <!-- 	<material name="${name}_green" /> -->
-            <!-- </visual> -->
+             <visual>
+             	<origin rpy="0 0 0" xyz="${side*(-0.025)} 0 0.09625" />
+             	<geometry>
+             	  <cylinder length="0.0275" radius="${cyl_radius}" />
+             	</geometry>
+             	<material name="${name}_green" />
+             </visual>
         </link>
 
         <!-- LENGTH NOT FOUND IN DATASHEET! GUESSED!!! -->
@@ -94,13 +94,13 @@
 
         <!-- LENGTH NOT FOUND IN DATASHEET! GUESSED!!! -->
         <link name="${name}_e3">
-            <!-- <visual> -->
-            <!-- 	<origin rpy="0 0 0" xyz="${side*(0.0175)} 0 0.015" /> -->
-            <!-- 	<geometry> -->
-            <!-- 	  <cylinder length="0.03" radius="${cyl_radius}" /> -->
-            <!-- 	</geometry> -->
-            <!-- 	<material name="green" /> -->
-            <!-- </visual> -->
+             <visual>
+             	<origin rpy="0 0 0" xyz="${side*(0.0175)} 0 0.015" />
+             	<geometry>
+             	  <cylinder length="0.03" radius="${cyl_radius}" />
+             	</geometry>
+             	<material name="green" />
+             </visual>
         </link>
 
         <link name="${name}_e">
@@ -108,24 +108,24 @@
 
         <!-- LENGTH NOT FOUND IN DATASHEET! GUESSED, BUT POSITION CALCULATED: E4 = D-G-F!!! -->
         <link name="${name}_e4">
-            <!-- <visual> -->
-            <!-- 	<origin rpy="0 0 0" xyz="${side*(0.02825)} 0 0.043" /> -->
-            <!-- 	<geometry> -->
-            <!-- 	  <cylinder length="0.026" radius="${cyl_radius}" /> -->
-            <!-- 	</geometry> -->
-            <!-- 	<material name="green" /> -->
-            <!-- </visual> -->
+             <visual>
+             	<origin rpy="0 0 0" xyz="${side*(0.02825)} 0 0.043" />
+             	<geometry>
+             	  <cylinder length="0.026" radius="${cyl_radius}" />
+             	</geometry>
+             	<material name="green" />
+             </visual>
         </link>
 
         <!-- LENGTH NOT FOUND IN DATASHEET! GUESSED, BUT POSITION CALCULATED: E5 = D-G!!! -->
         <link name="${name}_e5">
-            <!-- <visual> -->
-            <!-- 	<origin rpy="0 0 0" xyz="${side*(0.00675)} 0 0.04775" /> -->
-            <!-- 	<geometry> -->
-            <!-- 	  <cylinder length="0.0355" radius="${cyl_radius}" /> -->
-            <!-- 	</geometry> -->
-            <!-- 	<material name="green" /> -->
-            <!-- </visual> -->
+             <visual>
+             	<origin rpy="0 0 0" xyz="${side*(0.00675)} 0 0.04775" />
+             	<geometry>
+             	  <cylinder length="0.0355" radius="${cyl_radius}" />
+             	</geometry>
+             	<material name="green" />
+             </visual>
         </link>
 
 
@@ -181,7 +181,7 @@
                 <geometry>
                     <mesh scale="1 ${side*(1)} ${side*(1)}"
                           filename="package://schunk_lwa4p_svh/description/meshes/svh/d13.dae"/>
-                </geometry>
+            (    </geometry>
             </visual>
             <collision>
                 <geometry>
@@ -659,7 +659,115 @@
         </joint>
 
         <!-- extensions -->
-    <xacro:svh_transmission name="${name}" />
+    <!--xacro:svh_transmission name="${name}" /-->
+
+        <transmission name="${name}_Finger_Spread_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Finger_Spread">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Finger_Spread_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Pinky_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Pinky">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Pinky_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Ring_Finger_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Ring_Finger">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Ring_Finger_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Middle_Finger_Proximal_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Middle_Finger_Proximal">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Middle_Finger_Proximal_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Middle_Finger_Distal_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Middle_Finger_Distal">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Middle_Finger_Distal_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Index_Finger_Proximal_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Index_Finger_Proximal">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Index_Finger_Proximal_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Index_Finger_Distal_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Index_Finger_Distal">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Index_Finger_Distal_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Thumb_Flexion_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Thumb_Flexion">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Thumb_Flexion_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <transmission name="${name}_Thumb_Opposition_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_Thumb_Opposition">
+                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_Thumb_Opposition_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
 
     <!-- ros_control plugin -->
     <gazebo>

@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="029ef12a-d23d-4971-900a-eae03e17499f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/urdf/urdf/svh/svh.gazebo.xacro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/urdf/urdf/svh/svh.transmission.xacro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/simple_arm_control.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch/arm_control.launch" beforeDir="false" afterPath="$PROJECT_DIR$/launch/arm_control.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urdf/robot.urdf.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/robot.urdf.xacro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urdf/urdf/common.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/common.xacro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urdf/urdf/gazebo.urdf.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/gazebo.urdf.xacro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urdf/urdf/lwa4p/lwa4p.gazebo.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/lwa4p/lwa4p.gazebo.xacro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urdf/urdf/lwa4p/lwa4p.transmission.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/lwa4p/lwa4p.transmission.xacro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/urdf/urdf/lwa4p/lwa4p.urdf.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/lwa4p/lwa4p.urdf.xacro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/urdf/urdf/svh/svh.transmission.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/svh/svh.transmission.xacro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/urdf/urdf/svh/svh.urdf.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/urdf/urdf/svh/svh.urdf.xacro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../luh_youbot_description/urdf/sensors/asus_xtion_camera.urdf.xacro" beforeDir="false" afterPath="$PROJECT_DIR$/../luh_youbot_description/urdf/sensors/asus_xtion_camera.urdf.xacro" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
