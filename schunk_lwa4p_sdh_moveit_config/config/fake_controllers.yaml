@@ -1,0 +1,18 @@
+controller_list:
+  - name: fake_left_arm_controller
+    joints:
+      - arm_1_joint
+      - arm_2_joint
+      - arm_3_joint
+      - arm_4_joint
+      - arm_5_joint
+      - arm_6_joint
+  - name: fake_left_hand_controller
+    joints:
+      - left_hand_finger_22_joint
+      - left_hand_finger_23_joint
+      - left_hand_knuckle_joint
+      - left_hand_finger_12_joint
+      - left_hand_finger_13_joint
+      - left_hand_thumb_2_joint
+      - left_hand_thumb_3_joint

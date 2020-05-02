@@ -1,5 +1,5 @@
 ## joint_names
-joint_names: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint]
+joint_names: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_jointleft_hand_finger_22_joint, left_hand_finger_23_joint, left_hand_knuckle_joint, left_hand_finger_12_joint, left_hand_finger_13_joint, left_hand_thumb_2_joint, left_hand_thumb_3_joint]
 
 ## control_mode_adapter
 max_command_silence: 0.5
@@ -19,6 +19,13 @@ joint_trajectory_controller:
      - arm_4_joint
      - arm_5_joint
      - arm_6_joint
+     - left_hand_finger_22_joint
+     - left_hand_finger_23_joint
+     - left_hand_knuckle_joint
+     - left_hand_finger_12_joint
+     - left_hand_finger_13_joint
+     - left_hand_thumb_2_joint
+     - left_hand_thumb_3_joint
   constraints:
       goal_time: 0.6
       stopped_velocity_tolerance: 0.05
@@ -28,6 +35,13 @@ joint_trajectory_controller:
       arm_4_joint: {trajectory: 0.1, goal: 0.1}
       arm_5_joint: {trajectory: 0.1, goal: 0.1}
       arm_6_joint: {trajectory: 0.1, goal: 0.1}
+      left_hand_finger_22_joint: {trajectory: 0.1, goal: 0.1}
+      left_hand_finger_23_joint: {trajectory: 0.1, goal: 0.1}
+      left_hand_knuckle_joint: {trajectory: 0.1, goal: 0.1}
+      left_hand_finger_12_joint: {trajectory: 0.1, goal: 0.1}
+      left_hand_finger_13_joint: {trajectory: 0.1, goal: 0.1}
+      left_hand_thumb_2_joint: {trajectory: 0.1, goal: 0.1}
+      left_hand_thumb_3_joint: {trajectory: 0.1, goal: 0.1}
   stop_trajectory_duration: 0.5
   state_publish_rate:  25
   action_monitor_rate: 10
@@ -38,23 +52,37 @@ joint_trajectory_controller:
 joint_group_position_controller:
   type: position_controllers/JointGroupPositionController
   joints:
-     - arm_1_joint
-     - arm_2_joint
-     - arm_3_joint
-     - arm_4_joint
-     - arm_5_joint
-     - arm_6_joint
+    - arm_1_joint
+    - arm_2_joint
+    - arm_3_joint
+    - arm_4_joint
+    - arm_5_joint
+    - arm_6_joint
+    - left_hand_finger_22_joint
+    - left_hand_finger_23_joint
+    - left_hand_knuckle_joint
+    - left_hand_finger_12_joint
+    - left_hand_finger_13_joint
+    - left_hand_thumb_2_joint
+    - left_hand_thumb_3_joint
   required_drive_mode: 1
 
 joint_group_interpol_position_controller:
   type: position_controllers/JointGroupPositionController
   joints:
-     - arm_1_joint
-     - arm_2_joint
-     - arm_3_joint
-     - arm_4_joint
-     - arm_5_joint
-     - arm_6_joint
+    - arm_1_joint
+    - arm_2_joint
+    - arm_3_joint
+    - arm_4_joint
+    - arm_5_joint
+    - arm_6_joint
+    - left_hand_finger_22_joint
+    - left_hand_finger_23_joint
+    - left_hand_knuckle_joint
+    - left_hand_finger_12_joint
+    - left_hand_finger_13_joint
+    - left_hand_thumb_2_joint
+    - left_hand_thumb_3_joint
   required_drive_mode: 7
 
 arm_1_joint_position_controller:
@@ -81,17 +109,45 @@ arm_6_joint_position_controller:
   type: position_controllers/JointPositionController
   joint: arm_6_joint
   required_drive_mode: 1
+left_hand_finger_22_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: left_hand_finger_22_joint
+left_hand_finger_23_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: left_hand_finger_23_joint
+left_hand_knuckle_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: left_hand_knuckle_joint
+left_hand_finger_12_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: left_hand_finger_12_joint
+left_hand_finger_13_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: left_hand_finger_13_joint
+left_hand_thumb_2_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: left_hand_thumb_2_joint
+left_hand_thumb_3_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: left_hand_thumb_3_joint
 
 ## velocity controller
 joint_group_velocity_controller:
   type: velocity_controllers/JointGroupVelocityController
   joints:
-     - arm_1_joint
-     - arm_2_joint
-     - arm_3_joint
-     - arm_4_joint
-     - arm_5_joint
-     - arm_6_joint
+    - arm_1_joint
+    - arm_2_joint
+    - arm_3_joint
+    - arm_4_joint
+    - arm_5_joint
+    - arm_6_joint
+    - left_hand_finger_22_joint
+    - left_hand_finger_23_joint
+    - left_hand_knuckle_joint
+    - left_hand_finger_12_joint
+    - left_hand_finger_13_joint
+    - left_hand_thumb_2_joint
+    - left_hand_thumb_3_joint
   required_drive_mode: 2
 
 arm_1_joint_velocity_controller:
@@ -117,4 +173,32 @@ arm_5_joint_velocity_controller:
 arm_6_joint_velocity_controller:
   type: velocity_controllers/JointVelocityController
   joint: arm_6_joint
+  required_drive_mode: 2
+left_hand_finger_22_joint_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: left_hand_finger_22_joint
+  required_drive_mode: 2
+left_hand_finger_23_joint_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: left_hand_finger_23_joint
+  required_drive_mode: 2
+left_hand_knuckle_joint_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: left_hand_knuckle_joint
+  required_drive_mode: 2
+left_hand_finger_12_joint_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: left_hand_finger_12_joint
+  required_drive_mode: 2
+left_hand_finger_13_joint_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: left_hand_finger_13_joint
+  required_drive_mode: 2
+left_hand_thumb_2_joint_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: left_hand_thumb_2_joint
+  required_drive_mode: 2
+left_hand_thumb_3_joint_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: left_hand_thumb_3_joint
   required_drive_mode: 2

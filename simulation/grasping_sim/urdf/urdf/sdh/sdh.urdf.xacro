@@ -370,9 +370,14 @@
     <gazebo>
       <plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so">
         <robotNamespace>${name}</robotNamespace>
-        <filterJointsParam>joint_names</filterJointsParam>
       </plugin>
     </gazebo>
+<!---->
+<!--    <gazebo>-->
+<!--      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">-->
+<!--        <robotNamespace>${name}</robotNamespace>-->
+<!--      </plugin>-->
+<!--    </gazebo>-->
 
   </xacro:macro>
 

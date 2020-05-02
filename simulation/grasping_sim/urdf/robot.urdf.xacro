@@ -12,6 +12,9 @@
   <!-- schunk svh -->
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/svh/svh.urdf.xacro" />
 
+  <!-- schunk sdh -->
+  <xacro:include filename="$(find grasping_sim)/urdf/urdf/sdh/sdh.urdf.xacro" />
+
   <!-- zed camera -->
 <!--  <xacro:include filename="$(find zed_wrapper)/urdf/zed.urdf"/>-->
 
@@ -64,9 +67,13 @@
   </xacro:schunk_lwa4p>
 
   <!-- hand -->
-  <xacro:svh parent="arm_6_link" name="left_hand" side="-1">
-    <origin xyz="0 0 .1"  rpy= "0 0 0" />
-  </xacro:svh>
+<!--  <xacro:svh parent="arm_6_link" name="left_hand" side="-1">-->
+<!--    <origin xyz="0 0 .1"  rpy= "0 0 0" />-->
+<!--  </xacro:svh>-->
+
+  <xacro:schunk_sdh name="left_hand" parent="arm_6_link">
+    <origin xyz="0 0 0.08"  rpy= "0 0 0"/>
+  </xacro:schunk_sdh>
 
   <joint name="base_joint" type="fixed">
     <parent link="world"/>

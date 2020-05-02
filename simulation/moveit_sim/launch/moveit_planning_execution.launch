@@ -5,54 +5,14 @@
     # The planning and execution components of MoveIt! configured to
     # publish the current configuration of the robot (simulated or real)
     # and the current state of the world as seen by the planner
-    <include file="$(find schunk_lwa4p_svh_moveit_config)/launch/move_group.launch">
+    <include file="$(find schunk_lwa4p_sdh_moveit_config)/launch/move_group.launch">
         <arg name="publish_monitored_planning_scene" value="true" />
     </include>
 
     # The visualization component of MoveIt!
-    <include file="$(find schunk_lwa4p_svh_moveit_config)/launch/moveit_rviz.launch"/>
+<!--    <include file="$(find schunk_lwa4p_sdh_moveit_config)/launch/moveit_rviz.launch"/>-->
 
     # transform for zed to body
 <!--    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_zed_camera_center"-->
 <!--          args="0.0 0 0.0 0 0 3.1415 body zed_base_link 10"/>-->
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_e2"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_e2 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_z"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_z 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_c"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_c 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_b"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_b 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_a"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_a 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_j"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_j 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_m"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_m 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_l"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_l 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_q"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_q 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_o"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_o 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_virtual_l"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_virtual_l 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_s"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_s 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_k"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_k 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_p"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_p 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_i"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_i 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_virtual_i"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_virtual_i 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_t"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_t 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_virtual_j"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_virtual_j 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_r"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_r 10"/>
-    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher_left_hand_n"
-          args="0.0 0 0.0 0 0 0 left_hand_base_link left_hand_n 10"/>
 </launch>

@@ -3,11 +3,11 @@
     <arg name="gui" default="true"/>
 
     <!-- start gazebo with empty world -->
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find grasping_sim)/worlds/table.sdf"/>
-        <arg name="paused" value="$(arg paused)" />
-        <arg name="gui" value="$(arg gui)" />
-    </include>
+<!--    <include file="$(find gazebo_ros)/launch/empty_world.launch">-->
+<!--        <arg name="world_name" value="$(find grasping_sim)/worlds/table.sdf"/>-->
+<!--        <arg name="paused" value="$(arg paused)" />-->
+<!--        <arg name="gui" value="$(arg gui)" />-->
+<!--    </include>-->
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find grasping_sim)/config/arm_controller.yaml" command="load"/>
 

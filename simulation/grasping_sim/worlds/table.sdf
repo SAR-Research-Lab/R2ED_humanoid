@@ -294,52 +294,52 @@
                     <wrench>0 0 0 0 -0 0</wrench>
                 </link>
             </model>
-            <model name='humanoid'>
-                <pose frame=''>0 0 0.5 0 -0 0</pose>
-                <scale>1 1 1</scale>
-                <link name='arm_1_link'>
-                    <pose frame=''>0 -0.37 0.58001 1.5707 -0 0</pose>
-                    <velocity>0 0 0 0 -0 0</velocity>
-                    <acceleration>0 0 0 0 3.9e-05 0</acceleration>
-                    <wrench>0 0 0 0 -0 0</wrench>
-                </link>
-                <link name='arm_2_link'>
-                    <pose frame=''>0 -0.37 0.58001 3.1415 -0 -1e-06</pose>
-                    <velocity>0 0 0 0 -0 0</velocity>
-                    <acceleration>0 0 0 0 3.9e-05 0</acceleration>
-                    <wrench>0 0 0 0 -0 0</wrench>
-                </link>
-                <link name='arm_3_link'>
-                    <pose frame=''>0 -0.72 0.580041 8.9e-05 -3e-06 3.14159</pose>
-                    <velocity>0 0 0 0 -0 0</velocity>
-                    <acceleration>0 0 0 0 3.9e-05 2e-06</acceleration>
-                    <wrench>0 0 0 0 -0 0</wrench>
-                </link>
-                <link name='arm_4_link'>
-                    <pose frame=''>0 -0.72 0.58004 1.57071 4e-06 -3e-06</pose>
-                    <velocity>0 0 0 0 -0 0</velocity>
-                    <acceleration>0 0 0 -0 4.5e-05 2e-06</acceleration>
-                    <wrench>0 0 0 0 -0 0</wrench>
-                </link>
-                <link name='arm_5_link'>
-                    <pose frame=''>-1e-06 -1.025 0.58533 9.3e-05 -7e-06 3.14159</pose>
-                    <velocity>0 0 0 0 -0 0</velocity>
-                    <acceleration>1e-06 0 0 0 4.5e-05 5e-06</acceleration>
-                    <wrench>0 0 0 0 -0 0</wrench>
-                </link>
-                <link name='arm_6_link'>
-                    <pose frame=''>-1e-06 -1.025 0.58533 -1.57071 -7e-06 3.14159</pose>
-                    <velocity>0 0 0 0 -0 0</velocity>
-                    <acceleration>1e-06 0 0 0 4.9e-05 5e-06</acceleration>
-                    <wrench>0 0 0 0 -0 0</wrench>
-                </link>
-                <link name='body'>
-                    <pose frame=''>0 0 0.5 0 -0 0</pose>
-                    <velocity>0 0 0 0 -0 0</velocity>
-                    <acceleration>0 0 0 0 -0 0</acceleration>
-                    <wrench>0 0 0 0 -0 0</wrench>
-                </link>
-            </model>
+<!--            <model name='humanoid'>-->
+<!--                <pose frame=''>0 0 0.5 0 -0 0</pose>-->
+<!--                <scale>1 1 1</scale>-->
+<!--                <link name='arm_1_link'>-->
+<!--                    <pose frame=''>0 -0.37 0.58001 1.5707 -0 0</pose>-->
+<!--                    <velocity>0 0 0 0 -0 0</velocity>-->
+<!--                    <acceleration>0 0 0 0 3.9e-05 0</acceleration>-->
+<!--                    <wrench>0 0 0 0 -0 0</wrench>-->
+<!--                </link>-->
+<!--                <link name='arm_2_link'>-->
+<!--                    <pose frame=''>0 -0.37 0.58001 3.1415 -0 -1e-06</pose>-->
+<!--                    <velocity>0 0 0 0 -0 0</velocity>-->
+<!--                    <acceleration>0 0 0 0 3.9e-05 0</acceleration>-->
+<!--                    <wrench>0 0 0 0 -0 0</wrench>-->
+<!--                </link>-->
+<!--                <link name='arm_3_link'>-->
+<!--                    <pose frame=''>0 -0.72 0.580041 8.9e-05 -3e-06 3.14159</pose>-->
+<!--                    <velocity>0 0 0 0 -0 0</velocity>-->
+<!--                    <acceleration>0 0 0 0 3.9e-05 2e-06</acceleration>-->
+<!--                    <wrench>0 0 0 0 -0 0</wrench>-->
+<!--                </link>-->
+<!--                <link name='arm_4_link'>-->
+<!--                    <pose frame=''>0 -0.72 0.58004 1.57071 4e-06 -3e-06</pose>-->
+<!--                    <velocity>0 0 0 0 -0 0</velocity>-->
+<!--                    <acceleration>0 0 0 -0 4.5e-05 2e-06</acceleration>-->
+<!--                    <wrench>0 0 0 0 -0 0</wrench>-->
+<!--                </link>-->
+<!--                <link name='arm_5_link'>-->
+<!--                    <pose frame=''>-1e-06 -1.025 0.58533 9.3e-05 -7e-06 3.14159</pose>-->
+<!--                    <velocity>0 0 0 0 -0 0</velocity>-->
+<!--                    <acceleration>1e-06 0 0 0 4.5e-05 5e-06</acceleration>-->
+<!--                    <wrench>0 0 0 0 -0 0</wrench>-->
+<!--                </link>-->
+<!--                <link name='arm_6_link'>-->
+<!--                    <pose frame=''>-1e-06 -1.025 0.58533 -1.57071 -7e-06 3.14159</pose>-->
+<!--                    <velocity>0 0 0 0 -0 0</velocity>-->
+<!--                    <acceleration>1e-06 0 0 0 4.9e-05 5e-06</acceleration>-->
+<!--                    <wrench>0 0 0 0 -0 0</wrench>-->
+<!--                </link>-->
+<!--                <link name='body'>-->
+<!--                    <pose frame=''>0 0 0.5 0 -0 0</pose>-->
+<!--                    <velocity>0 0 0 0 -0 0</velocity>-->
+<!--                    <acceleration>0 0 0 0 -0 0</acceleration>-->
+<!--                    <wrench>0 0 0 0 -0 0</wrench>-->
+<!--                </link>-->
+<!--            </model>-->
             <model name='round_tin_base'>
                 <pose frame=''>-0.617216 -0.286839 0.525828 -0.001321 0.000686 0</pose>
                 <scale>1 1 1</scale>

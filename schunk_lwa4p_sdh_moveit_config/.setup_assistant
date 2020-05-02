@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: grasping_sim
+    relative_path: urdf/robot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/lwa4p.srdf
+  CONFIG:
+    author_name: Aaron Cofield
+    author_email: AaronC@noemail.com
+    generated_timestamp: 1584675939
