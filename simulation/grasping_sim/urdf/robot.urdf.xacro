@@ -10,7 +10,7 @@
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/lwa4p/lwa4p.urdf.xacro" />
 
   <!-- schunk svh -->
-  <xacro:include filename="$(find grasping_sim)/urdf/urdf/svh/svh.urdf.xacro" />
+<!--  <xacro:include filename="$(find grasping_sim)/urdf/urdf/svh/svh.urdf.xacro" />-->
 
   <!-- schunk sdh -->
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/sdh/sdh.urdf.xacro" />
@@ -62,7 +62,7 @@
   </joint>
 
   <!-- arm -->
-  <xacro:schunk_lwa4p name="arm" parent="body" has_podest="true">
+  <xacro:schunk_lwa4p name="left_arm" parent="body" has_podest="true">
     <origin xyz="0 -0.27 0.08" rpy="1.5707 0 0" /> <!--slightly above gazebo plane-->
   </xacro:schunk_lwa4p>
 
@@ -71,7 +71,7 @@
 <!--    <origin xyz="0 0 .1"  rpy= "0 0 0" />-->
 <!--  </xacro:svh>-->
 
-  <xacro:schunk_sdh name="left_hand" parent="arm_6_link">
+  <xacro:schunk_sdh name="left_hand" parent="left_arm_6_link">
     <origin xyz="0 0 0.08"  rpy= "0 0 0"/>
   </xacro:schunk_sdh>
 
@@ -198,5 +198,17 @@
     <origin xyz="0.08 -0.04 -0.05" rpy="0 -1.5707 0" />
   </xacro:asus_xtion_camera>
 
+  <!-- ros_control plugin -->
+  <!--    <gazebo>-->
+  <!--      <plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so">-->
+  <!--        <robotNamespace>${name}</robotNamespace>-->
+  <!--      </plugin>-->
+  <!--    </gazebo>-->
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace></robotNamespace>
+    </plugin>
+  </gazebo>
 
 </robot>

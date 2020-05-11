@@ -11,6 +11,7 @@
     <xacro:default_transmission jname="${name}_finger_13"/>
     <xacro:default_transmission jname="${name}_finger_22"/>
     <xacro:default_transmission jname="${name}_finger_23"/>
+    <xacro:default_transmission jname="${name}_thumb_1"/>
     <xacro:default_transmission jname="${name}_thumb_2"/>
     <xacro:default_transmission jname="${name}_thumb_3"/>
 

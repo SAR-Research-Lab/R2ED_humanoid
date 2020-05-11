@@ -25,11 +25,15 @@
   <arg name="urdf_path" default="$(find grasping_sim)/urdf/robot.urdf.xacro"/>
 
   <!-- launch the gazebo simulator and spawn the robot -->
-  <include file="$(find schunk_lwa4p_sdh_moveit_config)/launch/gazebo.launch" >
-    <arg name="paused" value="$(arg paused)"/>
-    <arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
-    <arg name="urdf_path" value="$(arg urdf_path)"/>
-  </include>
+<!--  <include file="$(find schunk_lwa4p_sdh_moveit_config)/launch/gazebo.launch" >-->
+<!--    <arg name="paused" value="$(arg paused)"/>-->
+<!--    <arg name="gazebo_gui" value="$(arg gazebo_gui)"/>-->
+<!--    <arg name="urdf_path" value="$(arg urdf_path)"/>-->
+<!--  </include>-->
+
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" textfile="$(arg urdf_path)" />
+  <include file="$(find schunk_lwa4p_sdh_moveit_config)/launch/ros_controllers.launch"/>
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find schunk_lwa4p_sdh_moveit_config)/launch/planning_context.launch">

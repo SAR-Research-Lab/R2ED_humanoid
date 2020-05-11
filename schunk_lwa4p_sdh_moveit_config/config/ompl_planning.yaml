@@ -146,6 +146,8 @@ left_arm:
     - LazyPRMstar
     - SPARS
     - SPARStwo
+  projection_evaluator: joints(left_arm_1_joint,left_arm_2_joint)
+  longest_valid_segment_fraction: 0.005
 left_hand:
   default_planner_config: ""
   planner_configs:
@@ -172,3 +174,5 @@ left_hand:
     - LazyPRMstar
     - SPARS
     - SPARStwo
+  projection_evaluator: joints(left_hand_finger_21_joint,left_hand_finger_22_joint)
+  longest_valid_segment_fraction: 0.005
