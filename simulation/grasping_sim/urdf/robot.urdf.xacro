@@ -10,7 +10,12 @@
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/lwa4p/lwa4p.urdf.xacro" />
 
   <!-- schunk svh -->
+  <!--
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/svh/svh.urdf.xacro" />
+  -->
+
+  <!-- schunk sdh -->
+  <xacro:include filename="$(find grasping_sim)/urdf/urdf/sdh/sdh.urdf.xacro" />
 
   <!-- zed camera -->
 <!--  <xacro:include filename="$(find zed_wrapper)/urdf/zed.urdf"/>-->
@@ -58,15 +63,32 @@
     <origin xyz=".27 .11 -.67" rpy="0.4887 0 -1.5707"/>
   </joint>
 
-  <!-- arm -->
-  <xacro:schunk_lwa4p name="arm" parent="body" has_podest="true">
+  <!-- left arm -->
+  <xacro:schunk_lwa4p name="left_arm" parent="body" has_podest="true">
     <origin xyz="0 -0.27 0.08" rpy="1.5707 0 0" /> <!--slightly above gazebo plane-->
   </xacro:schunk_lwa4p>
 
   <!-- hand -->
+  <!--
   <xacro:svh parent="arm_6_link" name="left_hand" side="-1">
     <origin xyz="0 0 .1"  rpy= "0 0 0" />
   </xacro:svh>
+  -->
+
+  <!-- left sdh gripper -->
+  <xacro:schunk_sdh name="left_hand" parent="left_arm_6_link">
+    <origin xyz="0 0 0.08"  rpy= "0 0 0"/>
+  </xacro:schunk_sdh>
+
+   <!-- right arm -->
+   <xacro:schunk_lwa4p name="right_arm" parent="body" has_podest="true">
+     <origin xyz="0 0.18 0.08" rpy="1.5707 0 3.1415" />
+   </xacro:schunk_lwa4p>
+
+   <!-- right sdh gripper -->
+   <xacro:schunk_sdh name="right_hand" parent="right_arm_6_link">
+    <origin xyz="0 0 0.08"  rpy= "0 0 3.1415"/>
+   </xacro:schunk_sdh>
 
   <joint name="base_joint" type="fixed">
     <parent link="world"/>
