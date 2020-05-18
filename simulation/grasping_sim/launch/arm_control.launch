@@ -1,18 +1,22 @@
 <launch>
 
   <rosparam file="$(find grasping_sim)/config/simple_arm_control.yaml" command="load"/>
+  <rosparam file="$(find grasping_sim)/config/simple_right_arm_control.yaml" command="load" />
 
-        <rosparam command="load" ns="/script_server/arm" file="$(find grasping_sim)/config/joint_configurations.yaml"/>
+  <rosparam command="load" ns="/script_server/arm" file="$(find grasping_sim)/config/joint_configurations.yaml"/>
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/arm" args="joint_group_position_controller joint_state_controller"/>
 
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/right_arm" args="joint_group_position_controller joint_state_controller"/>
+
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
   </node>
 
-    <include file="$(find grasping_sim)/launch/gazebo_table.launch"/>
+  <include file="$(find grasping_sim)/launch/gazebo_table.launch"/>
 
-    <include file="$(find grasping_sim)/launch/spawn_humanoid.launch"/>
+  <include file="$(find grasping_sim)/launch/spawn_humanoid.launch"/>
 
-<node ns="arm" name="joint_states_relay" pkg="topic_tools" type="relay" args="joint_states /joint_states" cwd="node" respawn="true" output="screen"/>
+  <node ns="arm" name="joint_states_relay" pkg="topic_tools" type="relay" args="joint_states /joint_states" cwd="node" respawn="true" output="screen"/>
 </launch>
