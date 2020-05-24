@@ -12,27 +12,35 @@
   <!-- schunk sdh -->
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/sdh/sdh.urdf.xacro" />
 
+  <!-- Clearpath Ridgeback -->
+  <xacro:include filename="$(find grasping_sim)/urdf/urdf/ridgeback/ridgeback.urdf.xacro" />
+
   <!-- zed camera -->
 <!--  <xacro:include filename="$(find zed_wrapper)/urdf/zed.urdf"/>-->
 
-  <!-- Used for fixing robot to Gazebo -->
-  <link name="world"/>
-
   <link name="body">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
     <collision>
 <!--      <origin xyz=".7 .7 -1.33" rpy="1.5707 0 -1.5707"/>-->
 <!--      <geometry>-->
 <!--        <mesh filename="package://schunk_lwa4p_svh/description/meshes/humanoid/chestconvexhull.stl" scale="0.001 0.001 0.001"/>-->
 <!--      </geometry>-->
-      <origin xyz="-0.03 -.046 -0.038" rpy="0 0 0"/>
+      <!--<origin xyz="-0.03 -.046 -0.038" rpy="0 0 0"/>-->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <box size=".4 .525 .576" />
       </geometry>
     </collision>
     <visual>
-      <origin xyz=".7 .7 -1.33" rpy="1.5707 0 -1.5707"/>
+      <!-- Origin for box model of body -->
+      <!--<origin xyz="0 0 0" rpy="0 0 0"/> -->
+      <!-- Origin for mesh model of body -->
+      <!--<origin xyz=".7 .7 -1.33" rpy="1.5707 0 -1.5707"/>-->
+      <origin xyz="-0.49 -0.75 -1.0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
       <geometry>
+        <!-- Box model of body -->
+        <!--<box size="0.4 0.525 0.576" />-->
+        <!-- Mesh model of body -->
         <mesh filename="package://grasping_sim/urdf/meshes/humanoid/chestlowres.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
@@ -55,32 +63,72 @@
   <joint name="head_neck" type="fixed">
     <parent link="body"/>
     <child link="head"/>
-    <origin xyz=".27 .11 -.67" rpy="0.4887 0 -1.5707"/>
+    <!--<origin xyz=".27 .11 -.67" rpy="0.4887 0 -1.5707"/>-->
+    <origin xyz="0.45 -0.16 -0.35" rpy="0 0 ${M_PI/2}"/>
   </joint>
 
   <!-- left arm -->
   <xacro:schunk_lwa4p name="arm" parent="body" has_podest="true">
-    <origin xyz="0 -0.27 0.08" rpy="1.5707 0 0" /> <!--slightly above gazebo plane-->
+    <!--<origin xyz="0 -0.27 0.08" rpy="1.5707 0 0" />--> <!--slightly above gazebo plane-->
+    <origin xyz="0.21 0.23 0.42" rpy="${M_PI/2} 0 ${M_PI}" />
   </xacro:schunk_lwa4p>
 
   <!-- left sdh hand -->
   <xacro:schunk_sdh name="left_hand" parent="arm_6_link">
+    <origin xyz="0 0 0.08"  rpy= "0 0 ${M_PI}"/>
+  </xacro:schunk_sdh>
+
+  <!-- right arm -->
+  <xacro:schunk_lwa4p name="right_arm" parent="body" has_podest="true">
+    <!--<origin xyz="0 0.18 0.08" rpy="1.5707 0 3.1415" />-->
+    <origin xyz="0.21 -0.24 0.42" rpy="${M_PI/2} 0 0" />
+  </xacro:schunk_lwa4p>
+
+  <!-- right sdh hand -->
+  <xacro:schunk_sdh name="right_hand" parent="right_arm_6_link">
     <origin xyz="0 0 0.08"  rpy= "0 0 0"/>
   </xacro:schunk_sdh>
 
-   <!-- right arm -->
-   <xacro:schunk_lwa4p name="right_arm" parent="body" has_podest="true">
-     <origin xyz="0 0.18 0.08" rpy="1.5707 0 3.1415" />
-   </xacro:schunk_lwa4p>
+  <!-- ridgeback -->
+  <xacro:clearpath_ridgeback name="ridgeback">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:clearpath_ridgeback>
 
-   <!-- right sdh gripper -->
-   <xacro:schunk_sdh name="right_hand" parent="right_arm_6_link">
-    <origin xyz="0 0 0.08"  rpy= "0 0 3.1415"/>
-   </xacro:schunk_sdh>
+  <!-- backlift -->
+  <link name="backlift">
+    <collision>
+      <geometry>
+        <box size="0.1 0.4 0.6" />
+      </geometry>
+      <origin xyz="0 0 0.3" rpy="0 0 0" />
+    </collision>
+    <visual>
+      <geometry>
+        <box size="0.1 0.4 0.6" />
+        <!-- Liftback mesh available but box with prismatic joint may be more useful -->
+        <!--
+        <mesh filename="package://grasping_sim/urdf/meshes/humanoid/backliftlowres.stl" scale="0.001 0.001 0.001" />
+        -->
+      </geometry>
+        <origin xyz="0 0 0.3" rpy="0 0 0" />
+        <!-- Origin if using liftback mesh -->
+        <!-- <origin xyz="0.3 0.75 -0.3" rpy="${M_PI/2} 0 -${M_PI/2}" /> -->
+    </visual>
+  </link>
 
-  <joint name="base_joint" type="fixed">
-    <parent link="world"/>
-    <child link="body"/>
+  <joint name="ridgeback_backlift" type="fixed">
+    <parent link="ridgeback_top_link" />
+    <child link="backlift" />
+    <origin xyz="-0.2 0 ${deck_height}" rpy="0 0 0" />
+  </joint>
+
+  <joint name="backlift_body" type="fixed">
+    <parent link="backlift" />
+    <child link="body" />
+    <!-- Origin for box model of body -->
+    <!--<origin xyz="0.25 0 0.6" rpy="0 0 0" />-->
+    <!-- Origin for mesh model of body -->
+    <origin xyz="0 0 0.5" rpy="0 0 0" />
   </joint>
 
   <joint name="camera_joint" type="fixed">
@@ -113,7 +161,6 @@
   </link>
 
   <!-- Left Camera -->
-
   <joint name="zed_left_camera_joint" type="fixed">
     <parent link="zed_camera_center"/>
     <child link="zed_left_camera_frame"/>
@@ -137,7 +184,6 @@
   <link name="zed_left_camera_optical_frame"/>
 
   <!-- Right Camera -->
-
   <joint name="zed_right_camera_joint" type="fixed">
     <parent link="zed_camera_center"/>
     <child link="zed_right_camera_frame"/>
@@ -159,9 +205,7 @@
     <sensor type="camera" name="camera1">
       <update_rate>15.0</update_rate>
       <camera name="head">
-
         <pose>0.005 0 0 0 0 0</pose>
-
         <horizontal_fov>1.3962634</horizontal_fov>
         <image>
           <width>400</width>
@@ -194,7 +238,7 @@
     </sensor>
   </gazebo>
 
-<!-- depth camera -->
+  <!-- depth camera -->
   <!-- Kamera -->
   <xacro:include filename="$(find luh_youbot_description)/urdf/sensors/asus_xtion_camera.urdf.xacro" />
   <xacro:asus_xtion_camera name="camera" parent="zed_depth_frame" tilt="0.0">
