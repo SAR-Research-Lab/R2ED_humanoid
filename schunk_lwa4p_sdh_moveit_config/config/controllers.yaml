@@ -1,0 +1,25 @@
+controller_list:
+  - name: left_arm_trajectory
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - left_arm_1_joint
+      - left_arm_2_joint
+      - left_arm_3_joint
+      - left_arm_4_joint
+      - left_arm_5_joint
+      - left_arm_6_joint
+#  - name: left_hand_trajectory #ros_control Gripper controller action only works with 1DOF grippers, will have to write custom for sdh
+#    action_ns: follow_joint_trajectory
+#    type: GripperCommand
+#    default: true
+#    parallel: true
+#    joints:
+#      - left_hand_finger_22_joint
+#      - left_hand_finger_23_joint
+#      - left_hand_knuckle_joint
+#      - left_hand_finger_12_joint
+#      - left_hand_finger_13_joint
+#      - left_hand_thumb_2_joint
+#      - left_hand_thumb_3_joint
