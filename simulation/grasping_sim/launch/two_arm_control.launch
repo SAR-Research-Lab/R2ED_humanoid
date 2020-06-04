@@ -14,6 +14,8 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
   </node>
 
+  <include file="$(find grasping_sim)/launch/ridgeback_control.launch" />
+
   <include file="$(find grasping_sim)/launch/gazebo_table.launch"/>
 
   <include file="$(find grasping_sim)/launch/spawn_humanoid.launch"/>

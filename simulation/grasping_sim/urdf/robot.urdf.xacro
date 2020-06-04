@@ -46,6 +46,10 @@
     </visual>
   </link>
 
+  <gazebo reference="body">
+    <material>Gazebo/Gold</material>
+  </gazebo>
+
   <link name="head">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <collision>
@@ -60,6 +64,10 @@
     </visual>
   </link>
 
+  <gazebo reference="head">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
   <joint name="head_neck" type="fixed">
     <parent link="body"/>
     <child link="head"/>
@@ -73,6 +81,26 @@
     <origin xyz="0.21 0.23 0.42" rpy="${M_PI/2} 0 ${M_PI}" />
   </xacro:schunk_lwa4p>
 
+  <gazebo reference="arm_1_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="arm_2_link">
+    <material>Gazebo/SkyBlue</material>
+  </gazebo>
+
+  <gazebo reference="arm_3_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="arm_4_link">
+    <material>Gazebo/SkyBlue</material>
+  </gazebo>
+
+  <gazebo reference="arm_5_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
   <!-- left sdh hand -->
   <xacro:schunk_sdh name="left_hand" parent="arm_6_link">
     <origin xyz="0 0 0.08"  rpy= "0 0 ${M_PI}"/>
@@ -83,6 +111,26 @@
     <!--<origin xyz="0 0.18 0.08" rpy="1.5707 0 3.1415" />-->
     <origin xyz="0.21 -0.24 0.42" rpy="${M_PI/2} 0 0" />
   </xacro:schunk_lwa4p>
+
+  <gazebo reference="right_arm_1_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="right_arm_2_link">
+    <material>Gazebo/SkyBlue</material>
+  </gazebo>
+
+  <gazebo reference="right_arm_3_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="right_arm_4_link">
+    <material>Gazebo/SkyBlue</material>
+  </gazebo>
+
+  <gazebo reference="right_arm_5_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
 
   <!-- right sdh hand -->
   <xacro:schunk_sdh name="right_hand" parent="right_arm_6_link">
@@ -105,16 +153,20 @@
     <visual>
       <geometry>
         <box size="0.1 0.4 0.6" />
-        <!-- Liftback mesh available but box with prismatic joint may be more useful -->
+        <!-- Backlift mesh available but box with prismatic joint may be more useful -->
         <!--
         <mesh filename="package://grasping_sim/urdf/meshes/humanoid/backliftlowres.stl" scale="0.001 0.001 0.001" />
         -->
       </geometry>
       <origin xyz="0 0 0.3" rpy="0 0 0" />
-      <!-- Origin if using liftback mesh -->
+      <!-- Origin if using backlift mesh -->
       <!-- <origin xyz="0.3 0.75 -0.3" rpy="${M_PI/2} 0 -${M_PI/2}" /> -->
     </visual>
   </link>
+
+  <gazebo reference="backlift">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
 
   <joint name="ridgeback_backlift" type="fixed">
     <parent link="ridgeback_top_link" />
@@ -128,6 +180,8 @@
     <!-- Origin for box model of body -->
     <!--<origin xyz="0.25 0 0.6" rpy="0 0 0" />-->
     <!-- Origin for mesh model of body -->
+    <axis xyz="0 0 1" />
+    <limit effort="10.0" lower="-0.3" upper="0.1" velocity="0.2" />
     <origin xyz="0 0 0.5" rpy="0 0 0" />
   </joint>
 

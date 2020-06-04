@@ -297,6 +297,20 @@
       <origin xyz="0 0 ${deck_height}" rpy="0 0 0"/>
     </joint>
 
+    <!-- Individual link colouring still needed in Gazebo 2.x -->
+    <gazebo reference="chassis_link"><material>Gazebo/DarkGrey</material></gazebo>
+    <gazebo reference="${name}_top_link"><material>Gazebo/DarkGrey</material></gazebo>
+    <gazebo reference="left_side_cover_link"><material>Gazebo/Yellow</material></gazebo>
+    <gazebo reference="right_side_cover_link"><material>Gazebo/Yellow</material></gazebo>
+    <gazebo reference="front_cover_link"><material>Gazebo/DarkGrey</material></gazebo>
+    <gazebo reference="rear_cover_link"><material>Gazebo/DarkGrey</material></gazebo>
+    <gazebo reference="front_lights_link"><material>Gazebo/WhiteGlow</material></gazebo>
+    <gazebo reference="rear_lights_link"><material>Gazebo/RedGlow</material></gazebo>
+    <gazebo reference="front_rocker_link"><material>Gazebo/DarkGrey</material></gazebo>
+    <gazebo reference="rear_rocker_link"><material>Gazebo/DarkGrey</material></gazebo>
+    <gazebo reference="axle_link"><material>Gazebo/DarkGrey</material></gazebo>
+
+
     <!-- Bring in simulation data for Gazebo. -->
     <!--
     <xacro:include filename="$(find ridgeback_description)/urdf/ridgeback.gazebo" />
