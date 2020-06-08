@@ -61,6 +61,7 @@
       <geometry>
         <mesh filename="package://grasping_sim/urdf/meshes/humanoid/headlowres.stl" scale="0.001 0.001 0.001" />
       </geometry>
+      <origin xyz="0.2 -0.16 -1.05" rpy="0 0 ${M_PI/2}"/>
     </visual>
   </link>
 
@@ -68,12 +69,26 @@
     <material>Gazebo/Grey</material>
   </gazebo>
 
-  <joint name="head_neck" type="fixed">
+  <joint name="head_neck" type="revolute">
     <parent link="body"/>
     <child link="head"/>
     <!--<origin xyz=".27 .11 -.67" rpy="0.4887 0 -1.5707"/>-->
-    <origin xyz="0.45 -0.16 -0.35" rpy="0 0 ${M_PI/2}"/>
+    <!--<origin xyz="0.45 -0.16 -0.35" rpy="0 0 ${M_PI/2}"/> -->
+    <origin xyz="0.24 0.0 0.69" rpy="0 0 0"/>
+    <axis xyz="0 1 0" /> <!-- Seems like it should be the y axis not the x axis -->
+    <limit effort="10" velocity="0.25" lower="-0.3" upper="0.4" />
   </joint>
+
+  <!-- Transmission for the neck -->
+  <transmission name="head_neck_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="$head_neck_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="head_neck">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
 
   <!-- left arm -->
   <xacro:schunk_lwa4p name="arm" parent="body" has_podest="true">
@@ -223,7 +238,8 @@
 
   <link name="zed_camera_center">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+      <origin xyz="0.034 0.02 -1.05" rpy="0 0 ${M_PI/2}"/> <!-- x increase moves it right -->
       <geometry>
         <mesh filename="package://grasping_sim/urdf/urdf/zed/models/ZED.stl" />
       </geometry>
@@ -321,6 +337,7 @@
   <!-- ros_control plugin -->
   <gazebo>
     <plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so">
+      <robotNamespace></robotNamespace>
     </plugin>
   </gazebo>
 

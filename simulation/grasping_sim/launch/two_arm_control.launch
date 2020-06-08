@@ -3,6 +3,7 @@
   <rosparam file="$(find grasping_sim)/config/simple_arm_control.yaml" command="load"/>
   <rosparam file="$(find grasping_sim)/config/simple_right_arm_control.yaml" command="load" />
   <rosparam file="$(find grasping_sim)/config/backlift_control.yaml" command="load" />
+  <rosparam file="$(find grasping_sim)/config/neck_control.yaml" command="load" />
 
   <rosparam command="load" ns="/script_server/arm" file="$(find grasping_sim)/config/joint_configurations.yaml"/>
 
@@ -14,6 +15,9 @@
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
         output="screen" ns="/backlift" args="joint_position_controller joint_state_controller" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/neck" args="joint_position_controller joint_state_controller" />
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
   </node>
