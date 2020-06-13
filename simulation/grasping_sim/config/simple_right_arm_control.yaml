@@ -1,0 +1,19 @@
+right_arm:
+        ## joint_names
+        joint_names: [right_arm_1_joint, right_arm_2_joint, right_arm_3_joint, right_arm_4_joint, right_arm_5_joint, right_arm_6_joint]
+        ## joint_state_controller
+        joint_state_controller:
+                type: joint_state_controller/JointStateController
+                publish_rate: 50
+        ## position controller
+        joint_group_position_controller:
+                type: position_controllers/JointGroupPositionController
+                joints:
+                        - right_arm_1_joint
+                        - right_arm_2_joint
+                        - right_arm_3_joint
+                        - right_arm_4_joint
+                        - right_arm_5_joint
+                        - right_arm_6_joint
+                required_drive_mode: 1
+
