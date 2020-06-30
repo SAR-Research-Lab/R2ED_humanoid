@@ -7,7 +7,7 @@
 
   <rosparam command="load" ns="/script_server/arm" file="$(find grasping_sim)/config/joint_configurations.yaml"/>
 
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+  <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/arm" args="joint_group_position_controller joint_state_controller"/>
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
@@ -17,16 +17,20 @@
         output="screen" ns="/backlift" args="joint_position_controller joint_state_controller" />
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-        output="screen" ns="/neck" args="joint_position_controller joint_state_controller" />
+        output="screen" ns="/neck" args="joint_position_controller joint_state_controller" /> -->
 
+  <include file="$(find grasping_sim)/launch/fairlane_lab.launch"/>
+
+  <!-- <include file="$(find grasping_sim)/launch/ridgeback.launch">
+    <arg name="config" value="base" />
+  </include> -->
+
+  <!--
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
   </node>
-
-  <include file="$(find grasping_sim)/launch/ridgeback_control.launch" />
-
-  <include file="$(find grasping_sim)/launch/gazebo_table.launch"/>
-
+  -->
+  <!--
   <include file="$(find grasping_sim)/launch/spawn_humanoid.launch"/>
-
+  -->
   <node ns="arm" name="joint_states_relay" pkg="topic_tools" type="relay" args="joint_states /joint_states" cwd="node" respawn="true" output="screen"/>
 </launch>

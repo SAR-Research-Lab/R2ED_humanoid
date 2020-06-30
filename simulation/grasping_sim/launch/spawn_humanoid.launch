@@ -4,7 +4,8 @@
         <arg name="x" value="0.0" />
         <arg name="y" value="0.0" />
         <arg name="z" value="0.8" />
-        <arg name="urdf_robot_file" value="$(find grasping_sim)/urdf/robot.urdf.xacro" />
+        <!--<arg name="urdf_robot_file" value="$(find grasping_sim)/urdf/robot.urdf.xacro" />-->
+        <arg name="urdf_robot_file" value="$(find grasping_sim)/urdf/simplerobot.urdf.xacro" />
         <arg name="robot_name" value="humanoid" />
     </include>
 </launch>

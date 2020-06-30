@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="lwa4p" >
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find schunk_lwa4p_svh)/description/urdf/common.xacro" />
+  <xacro:include filename="$(find schunk_lwa4p_svh)/description/urdf/materials.urdf.xacro" />
+
+  <!-- schunk lwa4p -->
+  <xacro:include filename="$(find schunk_lwa4p_svh)/description/urdf/lwa4p/lwa4p.urdf.xacro" />
+
+  <!-- schunk svh -->
+  <xacro:include filename="$(find schunk_lwa4p_svh)/description/urdf/svh/svh.urdf.xacro" />
+
+  <!-- zed camera -->
+<!--  <xacro:include filename="$(find zed_wrapper)/urdf/zed.urdf"/>-->
+
+  <!-- Used for fixing robot to Gazebo -->
+  <link name="world"/>
+
+  <link name="body">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <collision>
+<!--      <origin xyz=".7 .7 -1.33" rpy="1.5707 0 -1.5707"/>-->
+<!--      <geometry>-->
+<!--        <mesh filename="package://schunk_lwa4p_svh/description/meshes/humanoid/chestconvexhull.stl" scale="0.001 0.001 0.001"/>-->
+<!--      </geometry>-->
+      <origin xyz="-0.03 -.046 -0.038" rpy="0 0 0"/>
+      <geometry>
+        <box size=".4 .525 .576" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz=".7 .7 -1.33" rpy="1.5707 0 -1.5707"/>
+      <geometry>
+        <mesh filename="package://schunk_lwa4p_svh/description/meshes/humanoid/chestlowres.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+<!--  <link name="body2">-->
+<!--    <origin xyz="0 0 0" rpy="0 0 0"/>-->
+<!--    <collision>-->
+<!--      <origin xyz="0 -.1 0" rpy="0 0 0"/>-->
+<!--      <geometry>-->
+<!--        <box size=".4 .57 .53" />-->
+<!--      </geometry>-->
+<!--    </collision>-->
+<!--    <visual>-->
+<!--      <origin xyz="-0.03 -.046 -0.038" rpy="0 0 0"/>-->
+<!--      <geometry>-->
+<!--        <box size=".4 .525 .576" />-->
+<!--      </geometry>-->
+<!--    </visual>-->
+<!--  </link>-->
+
+  <link name="head">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <collision>
+      <geometry>
+        <mesh filename="package://schunk_lwa4p_svh/description/meshes/humanoid/headconvexhull.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://schunk_lwa4p_svh/description/meshes/humanoid/headlowres.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="head_neck" type="fixed">
+    <parent link="body"/>
+    <child link="head"/>
+    <origin xyz=".27 .11 -.67" rpy="0.4887 0 -1.5707"/>
+  </joint>
+
+  <!-- arm -->
+  <xacro:schunk_lwa4p name="arm" parent="body" has_podest="true">
+    <origin xyz="0 -0.27 0.08" rpy="1.5707 0 0" /> <!--slightly above gazebo plane-->
+  </xacro:schunk_lwa4p>
+
+  <!-- hand -->
+  <xacro:svh parent="arm_6_link" name="left_hand" side="-1">
+    <origin xyz="0 0 .1"  rpy= "0 0 0" />
+  </xacro:svh>
+
+  <!-- zed -->
+<!--  <xacro: parent="zed_base_link" name="left_hand" side="-1">-->
+<!--    <origin xyz="0 0 .1"  rpy= "0 0 0" />-->
+<!--  </xacro:>-->
+
+  <joint name="base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="body"/>
+  </joint>
+<!--  <joint name="base_joint" type="fixed">-->
+<!--    <parent link="world"/>-->
+<!--    <child link="body2"/>-->
+<!--  </joint>-->
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="head"/>
+    <child link="zed_base_link"/>
+    <origin xyz=".155 0.03 1.14" rpy="0 0 -1.5707" />
+  </joint>
+
+  <!-- base_link -->
+  <link name="zed_base_link" />
+
+
+  <!-- Camera Center -->
+  <joint name="zed_camera_center_joint" type="fixed">
+    <parent link="zed_base_link"/>
+    <child link="zed_camera_center"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <link name="zed_camera_center">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://zed_wrapper/urdf/models/ZED.stl" />
+      </geometry>
+      <material name="light_grey">
+        <color rgba="0.8 0.8 0.8 0.8"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Left Camera -->
+
+  <joint name="zed_left_camera_joint" type="fixed">
+    <parent link="zed_camera_center"/>
+    <child link="zed_left_camera_frame"/>
+    <origin xyz="0 0.06 0" rpy="0 0 0" />
+  </joint>
+
+  <link name="zed_left_camera_frame" />
+
+  <joint name="zed_left_camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57079632679 0.0 -1.57079632679"/>
+    <parent link="zed_left_camera_frame"/>
+    <child link="zed_left_camera_optical_frame"/>
+  </joint>
+
+  <link name="zed_left_camera_optical_frame"/>
+
+  <!-- Right Camera -->
+
+  <joint name="zed_right_camera_joint" type="fixed">
+    <parent link="zed_camera_center"/>
+    <child link="zed_right_camera_frame"/>
+    <origin xyz="0 -0.06 0" rpy="0 0 0" />
+  </joint>
+
+  <link name="zed_right_camera_frame" />
+
+  <joint name="zed_right_camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57079632679 0.0 -1.57079632679"/>
+    <parent link="zed_right_camera_frame"/>
+    <child link="zed_right_camera_optical_frame"/>
+  </joint>
+
+  <link name="zed_right_camera_optical_frame"/>
+
+</robot>

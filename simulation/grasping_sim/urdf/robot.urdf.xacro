@@ -8,10 +8,10 @@
 
   <!-- schunk lwa4p -->
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/lwa4p/lwa4p.urdf.xacro" />
-
+  
   <!-- schunk sdh -->
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/sdh/sdh.urdf.xacro" />
-
+  
   <!-- Clearpath Ridgeback -->
   <xacro:include filename="$(find grasping_sim)/urdf/urdf/ridgeback/ridgeback.urdf.xacro" />
 
@@ -44,6 +44,11 @@
         <mesh filename="package://grasping_sim/urdf/meshes/humanoid/chestlowres.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </visual>
+    <inertial>
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <mass value="2" />
+        <inertia ixx="0.05" ixy="0.0" ixz="0.0" iyy="0.05" iyz="0.0" izz="0.05" />
+    </inertial>
   </link>
 
   <gazebo reference="body">
@@ -63,6 +68,11 @@
       </geometry>
       <origin xyz="0.2 -0.16 -1.05" rpy="0 0 ${M_PI/2}"/>
     </visual>
+    <inertial>
+        <origin xyz="0 0 0.05" rpy="0 0 0" />
+        <mass value="0.5" />
+        <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+    </inertial>
   </link>
 
   <gazebo reference="head">
@@ -92,7 +102,6 @@
 
   <!-- left arm -->
   <xacro:schunk_lwa4p name="arm" parent="body" has_podest="true">
-    <!--<origin xyz="0 -0.27 0.08" rpy="1.5707 0 0" />--> <!--slightly above gazebo plane-->
     <origin xyz="0.21 0.23 0.42" rpy="${M_PI/2} 0 ${M_PI}" />
   </xacro:schunk_lwa4p>
 
@@ -120,10 +129,9 @@
   <xacro:schunk_sdh name="left_hand" parent="arm_6_link">
     <origin xyz="0 0 0.08"  rpy= "0 0 ${M_PI}"/>
   </xacro:schunk_sdh>
-
+  
   <!-- right arm -->
   <xacro:schunk_lwa4p name="right_arm" parent="body" has_podest="true">
-    <!--<origin xyz="0 0.18 0.08" rpy="1.5707 0 3.1415" />-->
     <origin xyz="0.21 -0.24 0.42" rpy="${M_PI/2} 0 0" />
   </xacro:schunk_lwa4p>
 
@@ -146,24 +154,24 @@
   <gazebo reference="right_arm_5_link">
     <material>Gazebo/Yellow</material>
   </gazebo>
-
+  
   <!-- right sdh hand -->
   <xacro:schunk_sdh name="right_hand" parent="right_arm_6_link">
     <origin xyz="0 0 0.08"  rpy= "0 0 0"/>
   </xacro:schunk_sdh>
-
+  
   <!-- ridgeback -->
   <xacro:clearpath_ridgeback name="ridgeback">
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:clearpath_ridgeback>
-
+  
   <!-- backlift -->
   <link name="backlift">
     <collision>
       <geometry>
         <box size="0.1 0.4 0.8" />
       </geometry>
-      <origin xyz="0 0 0.3" rpy="0 0 0" />
+      <origin xyz="0 0 0.4" rpy="0 0 0" />
     </collision>
     <visual>
       <geometry>
@@ -173,17 +181,17 @@
         <mesh filename="package://grasping_sim/urdf/meshes/humanoid/backliftlowres.stl" scale="0.001 0.001 0.001" />
         -->
       </geometry>
-      <origin xyz="0 0 0.3" rpy="0 0 0" />
+      <origin xyz="0 0 0.4" rpy="0 0 0" />
       <!-- Origin if using backlift mesh -->
       <!-- <origin xyz="0.3 0.75 -0.3" rpy="${M_PI/2} 0 -${M_PI/2}" /> -->
     </visual>
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0.2" rpy="0 0 0" />
       <mass value="1" />
       <inertia
-              ixx="1.0" ixy="0.0" ixz="0.0"
-              iyy="1.0" iyz="0.0"
-              izz="1.0" />
+              ixx="0.01" ixy="0.0" ixz="0.0"
+              iyy="0.01" iyz="0.0"
+              izz="0.01" />
     </inertial>
   </link>
 
