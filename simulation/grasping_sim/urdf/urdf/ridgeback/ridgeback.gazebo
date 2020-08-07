@@ -11,7 +11,7 @@
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <odometryRate>25.0</odometryRate>
-      <robotBaseFrame>ridgeback_base_link</robotBaseFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
       <cmdVelTimeOut>0.25</cmdVelTimeOut>
       <!-- Don't publish a transform: the controller does it. -->
       <publishOdometryTf>0</publishOdometryTf>
