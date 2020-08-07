@@ -221,7 +221,8 @@
   <joint name="camera_joint" type="fixed">
     <parent link="head"/>
     <child link="zed_base_link"/>
-    <origin xyz=".155 0.03 1.14" rpy="0 0 -1.5707" />
+    <!-- <origin xyz=".155 0.03 1.14" rpy="0 0 -1.5707" /> -->
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </joint>
 
   <!-- base_link -->
@@ -237,8 +238,7 @@
 
   <link name="zed_camera_center">
     <visual>
-       <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
-      <origin xyz="0.034 0.02 -1.05" rpy="0 0 ${M_PI/2}"/> <!-- x increase moves it right -->
+      <origin xyz="0.17 -0.005 0.09" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://grasping_sim/urdf/urdf/zed/models/ZED.stl" />
       </geometry>
@@ -252,19 +252,19 @@
   <joint name="zed_left_camera_joint" type="fixed">
     <parent link="zed_camera_center"/>
     <child link="zed_left_camera_frame"/>
-    <origin xyz="0 0.06 0" rpy="0 0 0" />
+    <origin xyz="0 0.0 0" rpy="0 0 0" />
   </joint>
 
   <link name="zed_left_camera_frame" />
 
   <joint name="zed_left_camera_depth_joint" type="fixed">
-    <origin xyz="0.05 0.05 0.05" rpy="-1.5707 1.5707 -1.5707"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
     <parent link="zed_left_camera_frame"/>
     <child link="zed_depth_frame"/>
   </joint>
 
   <joint name="zed_left_camera_optical_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="-1.57079632679 0.0 -1.57079632679"/>
+    <origin xyz="0 0 0.0" rpy="0 0.0 0"/>
     <parent link="zed_left_camera_frame"/>
     <child link="zed_left_camera_optical_frame"/>
   </joint>
@@ -293,7 +293,7 @@
     <sensor type="camera" name="camera1">
       <update_rate>15.0</update_rate>
       <camera name="head">
-        <pose>0.005 0 0 0 0 0</pose>
+        <pose>0.175 0 0.089 0 0 0.0</pose>
         <horizontal_fov>1.3962634</horizontal_fov>
         <image>
           <width>400</width>
@@ -330,7 +330,8 @@
   <!-- Kamera -->
   <xacro:include filename="$(find luh_youbot_description)/urdf/sensors/asus_xtion_camera.urdf.xacro" />
   <xacro:asus_xtion_camera name="camera" parent="zed_depth_frame" tilt="0.0">
-    <origin xyz="0.08 -0.04 -0.05" rpy="0 -1.5707 0" />
+    <!-- <origin xyz="0.08 -0.04 -0.05" rpy="0 -1.5707 0" /> -->
+    <origin xyz="0.16 -0.01 0.053" rpy="0 0 0" /> <!-- Same position as ZED camera -->
   </xacro:asus_xtion_camera>
 
   <!-- ros_control plugin -->
