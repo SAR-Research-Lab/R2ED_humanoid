@@ -4,14 +4,9 @@
   <rosparam file="$(find grasping_sim)/config/left_sdh_controller.yaml" command="load"/>
   <rosparam file="$(find grasping_sim)/config/simple_right_arm_control.yaml" command="load" />
   <rosparam file="$(find grasping_sim)/config/right_sdh_controller.yaml" command="load"/>
-  <rosparam file="$(find grasping_sim)/config/backlift_control.yaml" command="load" />
   <rosparam file="$(find grasping_sim)/config/neck_control.yaml" command="load" />
 
   <rosparam command="load" ns="/script_server/arm" file="$(find grasping_sim)/config/joint_configurations.yaml"/>
-
-  <!-- Configuration of Ridgeback which you would like to simulate.
-       See ridgeback_description for details. -->
-  <arg name="config" default="base" />
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen"
@@ -20,27 +15,16 @@
       /left_hand/joint_group_position_controller
       /right_arm/joint_group_position_controller
       /right_hand/joint_group_position_controller
-      /backlift/joint_position_controller
       /neck/joint_position_controller
-      /ridgeback_joint_publisher 
-      /ridgeback_velocity_controller
       "/>
 
-  <include file="$(find grasping_sim)/launch/fairlane_lab.launch"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+  </node>
 
- <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"> -->
-  <!-- </node> -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <include file="$(find grasping_sim)/launch/gazebo_table.launch"/>
 
-  <include file="$(find grasping_sim)/launch/ridgeback_control.launch" />
-
-  <include file="$(find grasping_sim)/launch/ridgeback_teleop.launch">
-    <arg name="joystick" value="false"/>
+  <include file="$(find grasping_sim)/launch/spawn_two_arm_humanoid.launch">
   </include>
 
-  <include file="$(find grasping_sim)/launch/spawn_humanoid.launch">
-    <arg name="config" value="$(arg config)" />
-  </include>
-
-  <!-- <node ns="arm" name="joint_states_relay" pkg="topic_tools" type="relay" args="joint_states /joint_states" cwd="node" respawn="true" output="screen"/> -->
+  <node ns="arm" name="joint_states_relay" pkg="topic_tools" type="relay" args="joint_states /joint_states" cwd="node" respawn="true" output="screen"/>
 </launch>
