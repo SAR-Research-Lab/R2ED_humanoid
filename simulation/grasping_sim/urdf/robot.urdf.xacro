@@ -236,7 +236,8 @@
     <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>
 
-  <link name="zed_camera_center">
+  <link name="zed_camera_center"> <!-- Commented out to allow multiple cameras to see out head visor. -->
+  <!--
     <visual>
       <origin xyz="0.17 -0.005 0.09" rpy="0 0 0"/>
       <geometry>
@@ -246,6 +247,7 @@
         <color rgba="0.8 0.8 0.8 0.8"/>
       </material>
     </visual>
+    -->
   </link>
 
   <!-- Left Camera -->
