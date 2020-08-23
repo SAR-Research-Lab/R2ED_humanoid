@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="lwa4p" >
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find grasping_sim)/urdf/urdf/common.xacro" />
+  <xacro:include filename="$(find grasping_sim)/urdf/urdf/materials.urdf.xacro" />
+
+  <!-- Clearpath Ridgeback -->
+  <xacro:include filename="$(find grasping_sim)/urdf/urdf/ridgeback/ridgeback.urdf.xacro" />
+
+  <!-- ridgeback -->
+  <xacro:clearpath_ridgeback name="ridgeback">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:clearpath_ridgeback>
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so">
+    <robotNamespace></robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,20 @@
+left_hand:
+  ##joint names
+  joint_names: [left_hand_knuckle_joint, left_hand_finger_12_joint, left_hand_finger_13_joint, left_hand_finger_21_joint, left_hand_finger_22_joint, left_hand_finger_23_joint, left_hand_thumb_2_joint, left_hand_thumb_3_joint]
+  ## joint_state_controller
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  ## position controller
+  joint_group_position_controller:
+      type: position_controllers/JointGroupPositionController
+      joints:
+          - left_hand_knuckle_joint
+          - left_hand_finger_12_joint
+          - left_hand_finger_13_joint
+          - left_hand_finger_21_joint
+          - left_hand_finger_22_joint
+          - left_hand_finger_23_joint
+          - left_hand_thumb_2_joint
+          - left_hand_thumb_3_joint
+      required_drive_mode: 1
