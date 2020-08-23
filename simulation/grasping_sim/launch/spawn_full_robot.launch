@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <arg name="config" default="$(optenv RIDGEBACK_CONFIG empty" />
+    <arg name="x" default="0.0" />
+    <arg name="y" default="0.0" />
+    <arg name="z" default="0.0" />
+
+    <arg name="urdf_robot_file" default="" />
+    <arg name="robot_name" default="" />
+
+    <!-- This Version was created due to some errors seen in the V1 that crashed GAzebo or went too slow in spawn -->
+    <!-- Load the URDF into the ROS Parameter Server -->
+    <param name="robot_description" command="$(find ridgeback_description)/scripts/env_run
+                                            $(find ridgeback_description)/urdf/configs/$(arg config)
+                                            xacro $(arg urdf_robot_file) --inorder" />
+
+    <rosparam param="/gazebo_ros_control/pid_gains">
+        front_left_wheel:
+            p: 1
+            i: 0.1
+            d: 0
+        front_right_wheel:
+            p: 1
+            i: 0.1
+            d: 0
+        rear_left_wheel:
+            p: 1
+            i: 0.1
+            d: 0
+        rear_right_wheel:
+            p: 1
+            i: 0.1
+            d: 0
+    </rosparam>
+
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <!-- <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" -->
+          <!-- args="-urdf -x $(arg x) -y $(arg y) -z $(arg z)  -model $(arg robot_name) -param robot_description"/> -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -x $(arg x) -y $(arg y) -z $(arg z)  -model $(arg robot_name) -param robot_description"/>      
+</launch>

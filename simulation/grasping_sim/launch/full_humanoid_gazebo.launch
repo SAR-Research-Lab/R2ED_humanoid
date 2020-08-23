@@ -38,7 +38,7 @@
     <arg name="joystick" value="false"/>
   </include>
 
-  <include file="$(find grasping_sim)/launch/spawn_humanoid.launch">
+  <include file="$(find grasping_sim)/launch/spawn_full_humanoid.launch">
     <arg name="config" value="$(arg config)" />
   </include>
 
