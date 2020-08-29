@@ -21,7 +21,16 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
   </node>
 
-  <include file="$(find grasping_sim)/launch/gazebo_table.launch"/>
+    <arg name="paused" default="false"/>
+    <arg name="gui" default="true"/>
+    <rosparam name="use_sim_time" type="bool" value="true"/> 
+
+    <!-- start gazebo with empty world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find grasping_sim)/worlds/CafeTable.sdf"/>
+        <arg name="paused" value="$(arg paused)" />
+        <arg name="gui" value="$(arg gui)" />
+    </include>
 
   <include file="$(find grasping_sim)/launch/spawn_two_arm_humanoid.launch">
   </include>
