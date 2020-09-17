@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/etc/NX/nxserver --startup && roslaunch /home/ubuntu/catkin_ws/src/humanoid/simulation/grasping_sim/launch/gazebo_table.launch &
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_CA]=Gazebo Sim
+Name=Gazebo Sim
+Comment[en_CA]=
+Comment=
