@@ -2,9 +2,11 @@ FROM tiryoh/ros-desktop-vnc:melodic
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Configure timezone and locale to spanish and America/Bogota timezone. Change locale and timezone to whatever you want
+# Configure timezone and locale. Change locale and timezone to whatever you want
 ENV LANG="en_US.UTF-8"
 ENV LANGUAGE=en_US
+# Above locale commands don't seem to work. Try to edit:
+RUN sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
 
 RUN apt update
 RUN apt-get install -y git ros-melodic-libntcan ros-melodic-libpcan       \
@@ -30,3 +32,5 @@ COPY schunk_lwa4p_svh schunk_lwa4p_svh
 COPY schunk_lwa4p_svh_moveit_config schunk_lwa4p_svh_moveit_config
 #COPY schunk_lwa4p_svh_moveit_config schunk_lwa4p_svh_moveit_config
 COPY simulation simulation
+
+CMD echo "docker run -p 6080:80 --shm-size=4096m ubuntu18-sdh-ridgeback:1.0"
