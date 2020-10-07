@@ -42,6 +42,9 @@ RUN source /opt/ros/melodic/setup.bash && mkdir catkin_ws/src/humanoid -p && \
                 cd catkin_ws/src && catkin_init_workspace && \
                 cd .. && catkin_make 
 
+#Copy some models to the user's .gazebo for use in sdfs.
+COPY gazebo_models .gazebo/models/ 
+
 RUN echo "source /home/ubuntu/catkin_ws/devel/setup.bash" >> .bashrc
 
-CMD echo "docker run -p 6080:80 --shm-size=4096m sarlabdearborn/humanoid:full_gazebo"
+CMD echo "docker run -p 6080:80 --shm-size=512m sarlabdearborn/humanoid:full_gazebo"
