@@ -26,7 +26,8 @@
       /ridgeback_velocity_controller
       "/>
 
-  <include file="$(find grasping_sim)/launch/fairlane_lab.launch"/>
+  <!-- <include file="$(find grasping_sim)/launch/fairlane_lab.launch"/> -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 
  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"> -->
   <!-- </node> -->

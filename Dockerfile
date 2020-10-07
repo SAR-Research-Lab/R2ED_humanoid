@@ -16,11 +16,16 @@ RUN apt-get install -y git ros-melodic-libntcan ros-melodic-libpcan       \
         ros-melodic-cob-command-gui libmuparser-dev python-rosinstall openjdk-8-jdk     \
         python-wstool ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control 
         
-RUN apt-get install -y ros-melodic-schunk-description \
+RUN apt-get install -y ros-melodic-schunk-description ros-melodic-schunk-libm5api \
+        ros-melodic-schunk-powercube-chain \
         ros-melodic-ridgeback-description ros-melodic-ridgeback-navigation \
         ros-melodic-ridgeback-simulator ros-melodic-ridgeback-desktop \
         ros-melodic-cob-cartesian-controller ros-melodic-cob-frame-tracker \
         ros-melodic-cob-gazebo-ros-control ros-melodic-cob-twist-controller
+
+RUN apt-get install -y ros-melodic-amcl ros-melodic-base-local-planner \
+        ros-melodic-clear-costmap-recovery ros-melodic-map-server \
+        ros-melodic-nav-core ros-melodic-tf2-tools ros-melodic-velocity-controllers
 
 SHELL ["/bin/bash", "-c"]
 
