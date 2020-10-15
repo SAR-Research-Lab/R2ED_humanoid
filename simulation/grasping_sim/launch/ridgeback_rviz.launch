@@ -1,0 +1,46 @@
+<launch>
+
+  <arg name="model" default="$(find grasping_sim)/urdf/ridgeback_only.urdf.xacro"/>
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+    <!-- Configuration of Ridgeback which you would like to simulate.
+       See ridgeback_description for details. -->
+  <arg name="config" default="base" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen"
+    args="
+      /ridgeback_joint_publisher 
+      /ridgeback_velocity_controller
+      "/>
+
+  <include file="$(find grasping_sim)/launch/fairlane_lab.launch"/>
+
+ <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"> -->
+  <!-- </node> -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <include file="$(find grasping_sim)/launch/ridgeback_control.launch" />
+
+  <include file="$(find grasping_sim)/launch/ridgeback_teleop.launch">
+    <arg name="joystick" value="false"/>
+  </include>
+
+    <include file="$(find grasping_sim)/launch/spawn_ridgeback.launch">
+        <arg name="x" value="0.0" />
+        <arg name="y" value="0.0" />
+        <arg name="z" value="0.8" />
+        <arg name="urdf_robot_file" value="$(find grasping_sim)/urdf/ridgeback_only.urdf.xacro" />
+        <arg name="robot_name" value="humanoid" />
+        <arg name="config" value="$(arg config)" />
+    </include>
+
+</launch>
