@@ -26,7 +26,7 @@
 <!--        <mesh filename="package://schunk_lwa4p_svh/description/meshes/humanoid/chestconvexhull.stl" scale="0.001 0.001 0.001"/>-->
 <!--      </geometry>-->
       <!--<origin xyz="-0.03 -.046 -0.038" rpy="0 0 0"/>-->
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0.27 0 0.28" rpy="0 0 0"/>
       <geometry>
         <box size="0.4 0.525 0.576" />
       </geometry>
@@ -53,8 +53,10 @@
   <link name="head">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <collision>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://grasping_sim/urdf/meshes/humanoid/headconvexhull.stl" scale="0.001 0.001 0.001"/>
+        <!-- <mesh filename="package://grasping_sim/urdf/meshes/humanoid/headconvexhull.stl" scale="0.001 0.001 0.001"/> -->
+        <cylinder length="0.3" radius="0.19" />
       </geometry>
     </collision>
     <visual>
